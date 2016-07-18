@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/06/2016 02:12:45 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Language" table="language" catalog="login1" optimistic-lock="version">
+        <id name="idlanguage" type="string">
+            <column name="idlanguage" length="20" />
+            <generator class="assigned" />
+        </id>
+        <set name="codes" table="code" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Language_idlanguage" length="20" not-null="true" />
+            </key>
+            <one-to-many class="entity.Code" />
+        </set>
+    </class>
+</hibernate-mapping>

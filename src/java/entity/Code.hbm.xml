@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/06/2016 02:12:45 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Code" table="code" catalog="login1" optimistic-lock="version" >
+        <composite-id name="id" class="entity.CodeId">
+            <key-property name="idcode" type="int">
+                <column name="idcode" />
+            </key-property>
+            <key-property name="userUsername" type="string">
+                <column name="user_username" length="45" />
+            </key-property>
+            <key-property name="languageIdlanguage" type="string">
+                <column name="Language_idlanguage" length="20" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="language" class="entity.Language" update="false" insert="false" fetch="select">
+            <column name="Language_idlanguage" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="entity.User" update="false" insert="false" fetch="select">
+            <column name="user_username" length="45" not-null="true" />
+        </many-to-one>
+        <property name="input" type="string">
+            <column name="input" length="500" />
+        </property>
+        <property name="output" type="string">
+            <column name="output" length="500" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="100" />
+        </property>
+        <set name="rows" table="row" inverse="true" lazy="true" fetch="select" cascade = "all">
+            <key>
+                <column name="code_idcode" not-null="true" />
+                <column name="code_user_username" length="45" not-null="true" />
+                <column name="code_Language_idlanguage" length="20" not-null="true" />
+            </key>
+            <one-to-many class="entity.Row" />
+        </set>
+        <set name="diagrams" table="diagram" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="code_idcode" not-null="true" />
+                <column name="code_user_username" length="45" not-null="true" />
+                <column name="code_Language_idlanguage" length="20" not-null="true" />
+            </key>
+            <one-to-many class="entity.Diagram" />
+        </set>
+    </class>
+</hibernate-mapping>
