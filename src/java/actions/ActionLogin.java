@@ -7,7 +7,6 @@ package actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Code;
-import entity.CodeId;
 import entity.Language;
 import entity.User;
 import java.util.ArrayList;
@@ -42,6 +41,7 @@ public class ActionLogin extends ActionSupport implements SessionAware{
     public Map<String, Object> getSesion() {
         return sesion;
     }
+    
 
     public void setSesion(Map<String, Object> sesion) {
         this.sesion = sesion;
@@ -97,7 +97,7 @@ public class ActionLogin extends ActionSupport implements SessionAware{
         addActionMessage("Welcome");
         
         List<Language> list = hibernateSession.createQuery("from Language").list();
-        languages = new ArrayList<String>();
+        languages = new ArrayList<>();
         list.stream().forEach((l) -> {
             languages.add(l.getIdlanguage());
         });
@@ -117,6 +117,5 @@ public class ActionLogin extends ActionSupport implements SessionAware{
         this.sesion = map;
     }
     
-    
-    
+
 }

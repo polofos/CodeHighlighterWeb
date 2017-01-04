@@ -69,6 +69,8 @@ public class ActionEdit extends ActionSupport implements ApplicationAware, Param
     
     @Override
     public String execute() throws Exception {
+        //Si hay parámetros el action se llama desde bienvenido.jsp
+        //De otra forma se llama desde newCode.jsp
         if(params.isEmpty()){
             codeId = (CodeId) app.get("codeId");
         } else {

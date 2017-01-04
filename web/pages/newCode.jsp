@@ -42,7 +42,7 @@
             <script type="text/javascript" src="js/html2canvas.js"></script>
             <script>
                 function createCanvas(){
-                    html2canvas(document.body, {
+                    html2canvas(document.body.main.section {
                         onrendered: function(canvas) {
                             document.body.appendChild(canvas);
                         }
@@ -78,7 +78,8 @@
                             
             <section>
                 <ul>
-                    <a href="ActionEdit.action" > Edit Code </a>
+                    <li><a href="ActionEdit.action" > Edit Code </a></li>
+                    <li><a href="ActionLogin.action" > Regresar </li>
                 </ul>
                 <button type="button" name="canvasbuttton" onclick="createCanvas()"> Create screenShot </button>
             </section>

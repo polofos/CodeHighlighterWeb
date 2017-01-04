@@ -25,13 +25,24 @@
             </s:iterator> -->
             <s:set var="i" value="%{0}" scope="page" > </s:set>
             <s:iterator id="codes" value="listCode" status="it">
-                <s:url action="ActionEdit.action" var="urlAct" >
-                    <s:param name="idIdCode"> ${attr.listCode[i].id.idcode} </s:param>
-                    <s:param name="idUserName"> ${attr.listCode[i].id.userUsername} </s:param>
-                    <s:param name="idLanguage"> ${attr.listCode[i].id.languageIdlanguage} </s:param>
+                <s:url action="ActionEdit.action" var="urlActEdit" >
+                    <s:param name="idIdCode"> ${attr.listCode[it.index].id.idcode} </s:param>
+                    <s:param name="idUserName"> ${attr.listCode[it.index].id.userUsername} </s:param>
+                    <s:param name="idLanguage"> ${attr.listCode[it.index].id.languageIdlanguage} </s:param>
                 </s:url>
-                <li> <p> Code ${page.i+1}: ${attr.listCode[i].title}    Language: ${attr.listCode[i].language.idlanguage} </p> </li>
-                <li> <s:a href=" %{urlAct}">  Edit </s:a>  </li>
+                <s:url action="ActionDelete.action" var="urlActDelete" >
+                    <s:param name="idIdCode"> ${attr.listCode[it.index].id.idcode} </s:param>
+                    <s:param name="idUserName"> ${attr.listCode[it.index].id.userUsername} </s:param>
+                    <s:param name="idLanguage"> ${attr.listCode[it.index].id.languageIdlanguage} </s:param>
+                </s:url>
+                <li> <p>
+                        Code ${it.count}: ${attr.listCode[it.index].title}
+                        Language: ${attr.listCode[it.index].language.idlanguage}
+                </p> </li>
+                <li>
+                    <s:a href=" %{urlActEdit}">  Edit </s:a>
+                    <s:a href=" %{urlActDelete}"> Delete </s:a>
+                </li>
                 <s:set var="i" value="%{attr.i+1}" scope="page" > </s:set>
             </s:iterator>
         </main>

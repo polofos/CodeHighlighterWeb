@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editro de código</title>
+        <title>Editor de código</title>
         <script src="/js/jquery-3.0.0.js" type="text/javascript"></script>
         <script>
             var contador = 0;

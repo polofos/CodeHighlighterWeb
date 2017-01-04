@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30/06/2016 02:12:45 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entity.Language" table="language" catalog="login1" optimistic-lock="version">
+    <class name="entity.Language" table="Language" catalog="login1" optimistic-lock="version">
         <id name="idlanguage" type="string">
             <column name="idlanguage" length="20" />
             <generator class="assigned" />
